@@ -1,17 +1,26 @@
 import React from 'react';
 
 const StreamContext = React.createContext({
-    write: (text) => {
+    write: (chunk) => {
         console.log('No enclosing stream for write action.');
+    },
+    collect: () => {
+        console.log('No enclosing stream for collect.');
+        return [];
     }
 });
 
-export const Chunk = ({ text }) => <StreamContext.Consumer>{({ write }) => {write(text);}}</StreamContext.Consumer>;
+export const Collect = ({ children }) => <StreamContext.Consumer>{({ collect }) => {children(collect());}}</StreamContext.Consumer>;
+
+export const Chunk = ({ children }) => <StreamContext.Consumer>{({ write }) => {write(children);}}</StreamContext.Consumer>;
 
 export const InlineStream = ({ children }) => {
-    const write = (text) => {
-        console.log(`Writing '${text}' ...`);
+    const chunks = [];
+    const write = (chunk) => {
+        chunks.push(chunk);
     };
-    console.log('Rendering InlineStream ...');
-    return <StreamContext.Provider value={{ write }}>{ children }</StreamContext.Provider>;
+    const collect = () => {
+        return chunks;
+    };
+    return <StreamContext.Provider value={{ write, collect }}>{ children }</StreamContext.Provider>;
 };
