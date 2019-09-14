@@ -2,11 +2,10 @@
   "name": "gatsby-plugin-inline-stream",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "index.js",
   "scripts": {
-    "build": "npx babel src --out-dir dist",
-    "watch": "npx babel src --watch --out-dir dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir .",
+    "watch": "babel src --watch --out-dir ."
   },
   "repository": {
     "type": "git",
@@ -22,6 +21,14 @@
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
-    "@babel/preset-env": "^7.6.0"
+    "babel-preset-gatsby-package": "^0.2.4"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.6.0",
+    "react": "^16.9.0"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.0.0",
+    "gatsby-plugin-check-ssr": "^1.0.0"
   }
 }
