@@ -1,5 +1,4 @@
 import React from 'react';
-import CheckSSR from 'gatsby-plugin-check-ssr';
 
 const StreamContext = React.createContext({
     write: (text) => {
@@ -14,10 +13,5 @@ export const InlineStream = ({ children }) => {
         console.log(`Writing '${text}' ...`);
     };
     console.log('Rendering InlineStream ...');
-    return (
-        <CheckSSR.Consumer>{ build => (
-            build &&
-            <StreamContext.Provider value={{ write }}>{ children }</StreamContext.Provider>
-        )}</CheckSSR.Consumer>
-    );
+    return <StreamContext.Provider value={{ write }}>{ children }</StreamContext.Provider>;
 };
