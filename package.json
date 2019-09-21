@@ -1,7 +1,7 @@
 {
   "name": "react-inline-stream",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.1",
+  "description": "React components for recording items in an array during rendering.",
   "main": "index.js",
   "scripts": {
     "build": "babel src --out-dir .",
@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/nimaanari/react-inline-stream.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["react", "inline stream"],
+  "author": "Nima Anari",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/nimaanari/react-inline-stream/issues"
